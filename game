@@ -1,0 +1,39 @@
+x=float(100)
+y=float(500)
+sx=float(1) #скорость по х
+sy=float(3) #скорость по у
+score=0
+def setup():
+    size(800,800)
+    background(155)
+     
+    
+def draw():
+    background (155)
+    global x,y,sx,sy, score
+    x = x+sx
+    y = y+sy
+    if x>width:
+        sx = sx*(-1)
+    if x<0:
+        sx = sx*(-1)
+    if y<0:
+         sy = sy*(-1)
+    t=mouseX-100
+    f=mouseX+100
+    if y==710 and t<x<f:
+        score=score+1 #подсчет очков
+        sy=sy*(-1.05) #увеличение скорости при ударе
+    if y>720: #конец игры
+        score=str(score)
+        print(score +' '+ 'repulsed')
+     
+
+        exit()
+    stroke(0)
+    strokeWeight(4)
+    fill(255,0,0)
+    ellipse(x,y,50,50) #шарик
+    ellipse(mouseX, 750, 100, 10) #платформа
+   
+    
